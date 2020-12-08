@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -32,7 +33,7 @@ class MovieServiceTest {
 
         //given
         float expectedUserRanking = 9.7f;
-        Mockito.when(movieRepository.findByQuery(any())).thenReturn(getStubMovieList());
+        given(movieRepository.findByQuery(any())).willReturn(getStubMovieList());
         movieService = new MovieService(movieRepository);
 
         //when
@@ -50,7 +51,7 @@ class MovieServiceTest {
 
         //given
         int expectedMovieSize = 3;
-        Mockito.when(movieRepository.findByQuery(any())).thenReturn(getStubMovieList());
+        given(movieRepository.findByQuery(any())).willReturn(getStubMovieList());
         movieService = new MovieService(movieRepository);
 
         //when
@@ -68,7 +69,7 @@ class MovieServiceTest {
 
         //given
         int expectedSpecialCharacterCount = 0;
-        Mockito.when(movieRepository.findByQuery(any())).thenReturn(getStubMovieList());
+        given(movieRepository.findByQuery(any())).willReturn(getStubMovieList());
         movieService = new MovieService(movieRepository);
 
         //when
@@ -89,7 +90,7 @@ class MovieServiceTest {
 
         //given
         double expectedAverage = 9.5;
-        Mockito.when(movieRepository.findByQuery(any())).thenReturn(getStubMovieList());
+        given(movieRepository.findByQuery(any())).willReturn(getStubMovieList());
         movieService = new MovieService(movieRepository);
 
         //when
