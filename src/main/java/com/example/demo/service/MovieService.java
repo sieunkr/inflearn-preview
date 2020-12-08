@@ -6,6 +6,7 @@ import com.example.demo.core.repository.MovieRepository;
 import com.example.demo.exception.BadRequestException;
 import com.example.demo.exception.ExceptionMessage;
 import com.example.demo.provider.MovieRepositoryImpl;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -26,6 +27,7 @@ public class MovieService {
         return getMovieGroup(query).getList();
     }
 
+    @Cacheable(value = "cache::movie", key = "#query")
     public List<Movie> findByQueryOrderRating(final String query) {
 
         if (StringUtils.isEmpty(query)) {
@@ -42,12 +44,6 @@ public class MovieService {
 
     private MovieGroup getMovieGroup(final String query) {
 
-        return new MovieGroup(findByQueryImpl(query));
-    }
-
-    //TODO: 메서드 네이밍 고민 중
-    private List<Movie> findByQueryImpl(final String query) {
-
-        return movieRepository.findByQuery(query);
+        return new MovieGroup(movieRepository.findByQuery(query));
     }
 }
