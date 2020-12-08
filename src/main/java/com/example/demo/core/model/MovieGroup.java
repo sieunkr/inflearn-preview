@@ -11,7 +11,7 @@ public class MovieGroup {
     private final List<Movie> list;
     private final static int AVERAGE_USER_RATING_TOP_NUM = 2;
 
-    public MovieGroup(List<Movie> list) {
+    public MovieGroup(final List<Movie> list) {
         this.list = list;
     }
 

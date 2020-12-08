@@ -4,9 +4,11 @@ import lombok.Builder;
 import lombok.Getter;
 import org.springframework.util.StringUtils;
 
+import java.io.Serializable;
+
 @Builder
 @Getter
-public class Movie {
+public class Movie implements Serializable {
 
     private String title;
     private String link;
